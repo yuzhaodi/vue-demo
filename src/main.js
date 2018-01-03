@@ -12,9 +12,18 @@ Vue.use(VueRouter)
 //导入路由文件
 import router from './router.js'
 
+//导入vue-resource
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
+
 //导入头部固定部分
 import { Header } from 'mint-ui';
 Vue.component(Header.name, Header);
+
+//导入轮播图
+import { Swipe, SwipeItem } from 'mint-ui';
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
 
 
 //导入mui样式
