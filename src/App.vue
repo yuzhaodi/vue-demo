@@ -14,7 +14,7 @@
 			</router-link>
 			<router-link class="mui-tab-item" to="/member">
 				<span class="mui-icon mui-icon-contact"></span>
-				<span class="mui-tab-label">haha</span>
+				<span class="mui-tab-label">会员</span>
 			</router-link>
 			<router-link class="mui-tab-item" to="/shopcar">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-cart">
