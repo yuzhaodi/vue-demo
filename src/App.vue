@@ -1,0 +1,43 @@
+<template>
+  <div class="app-container">
+      <!-- 固定的头部  mint-->
+      <mt-header fixed title="分瓜的项目"></mt-header>
+
+      <!-- 中间切换的组件 -->
+      <router-view></router-view>
+
+      <!-- 底部固定部分  MUI -->
+      <nav class="mui-bar mui-bar-tab">
+			<router-link class="mui-tab-item" to="/home">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</router-link>
+			<router-link class="mui-tab-item" to="/member">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">haha</span>
+			</router-link>
+			<router-link class="mui-tab-item" to="/shopcar">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart">
+          <span class="mui-badge">0</span>
+        </span>
+				<span class="mui-tab-label">购物车</span>
+			</router-link>
+			<router-link class="mui-tab-item" to="/search">
+				<span class="mui-icon mui-icon-gear"></span>
+				<span class="mui-tab-label">设置</span>
+			</router-link>
+		</nav>
+
+  </div>
+</template>
+
+<script>
+
+</script>
+
+
+<style lang="scss" scoped>
+  .app-container{
+    padding-top: 40px;
+  }
+</style>
