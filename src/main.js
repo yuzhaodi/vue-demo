@@ -27,6 +27,17 @@ Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 
 
+//导入时间插件  格式化时间
+import moment from 'moment'
+Vue.filter('dateformat',function(datestr,pattern='YYYY-MM-DD HH:MM:SS'){
+  return moment(datestr).format(pattern)
+})
+
+
+
+
+
+
 //导入mui样式
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
