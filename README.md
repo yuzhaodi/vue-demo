@@ -10,7 +10,7 @@
 
 ## 用(传统方式)命令行把修改过后的代码上传到码云？？？
 1. git add .
-2. git commit -m "提交信息"
+2. git commit -m "提交信息aa"
 3. git push
 
 ## 制作首页App组件
