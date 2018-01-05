@@ -15,6 +15,7 @@ import router from './router.js'
 //导入vue-resource
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
+Vue.http.options.root = 'http://vue.studyit.io';
 
 //导入头部固定部分
 import { Header } from 'mint-ui';

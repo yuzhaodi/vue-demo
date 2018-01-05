@@ -46,7 +46,7 @@ import { Toast } from 'mint-ui';
     },
     methods:{
       getlunbo(){
-        this.$http.get("http://vue.studyit.io/api/getlunbo").then(result=>{
+        this.$http.get("api/getlunbo").then(result=>{
           //console.log(result.body);
           if(result.body.status===0){
             this.lunbotuList=result.body.message;
