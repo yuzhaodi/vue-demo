@@ -8,7 +8,7 @@ import ShopcarContainer from './components/tabbar/ShopcarContainer.vue'
 import SearchContainer from './components/tabbar/SearchContainer.vue'
 import NewsList from './components/news/NewsList.vue'
 import Newsinfo from './components/news/Newsinfo.vue'
-import Photos from './components/photos/Photos.vue'
+import Photos from './components/photos/PhotosList.vue'
 
 
 // 3. 创建路由对象
