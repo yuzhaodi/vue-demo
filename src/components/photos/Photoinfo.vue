@@ -9,9 +9,11 @@
     <hr>
 
     <!-- 缩略图区域 -->
-    <div class="thumbs">
-      <img class="preview-img" v-for="(item, index) in list" :src="item.src" height="100" @click="$preview.open(index, list)" :key="item.src">
-    </div>
+    <template>
+      <div class="thumbs">
+        <img class="preview-img" v-for="(item, index) in list" :src="item.src" height="100" @click="$preview.open(index, list)" :key="item.src">
+      </div>
+    </template>
 
     <!-- 图片内容区域 -->
     <div class="content" v-html="photoinfo.content"></div>
@@ -46,20 +48,16 @@ export default {
         }
       });
     },
-    getThumbs() {
-      // 获取缩略图
-      this.$http.get("api/getthumimages/" + this.id).then(result => {
-        if (result.body.status === 0) {
-          // 循环每个图片数据，补全图片的宽和高
-          //console.log(result.body.message)
-          result.body.message.forEach(item => {
-            item.w = 600;
-            item.h = 400;
-          });
-          // 把完整的数据保存到 list 中
-          this.list = result.body.message;
+    getThumbs(){
+      this.$http.get('api/getthumimages/'+this.id).then(result=>{
+        if(result.body.status===0){
+          result.body.message.forEach(item=>{
+            item.w=600;
+            item.h=400
+          })
+          this.list=result.body.message;
         }
-      });
+      })
     }
   },
   components: {
