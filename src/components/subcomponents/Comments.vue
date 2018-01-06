@@ -10,11 +10,11 @@
           第{{ i+1 }}楼&nbsp;&nbsp;用户：{{item.user_name}}&nbsp;&nbsp;发表时间:{{item.add_time | dateformat}}
         </div>
         <div class="cmt-body">
-          {{item.content==='undefined'?'此用户懒得很,没写啥':item.content}}
+          {{item.content==='' ?'此用户懒得很,没写啥':item.content}}
         </div>
       </div>
     </div>
-    <mt-button type='danger' size='large' plain>加载更多</mt-button>
+    <mt-button type='danger' size='large' plain @click="getMore">加载更多</mt-button>
   </div>
 </template>
 
@@ -34,11 +34,15 @@ import {Toast} from 'mint-ui'
       getComments(){
         this.$http.get('api/getcomments/'+this.id+'?pageindex='+this.pageIndex).then(result=>{
           if(result.body.status===0){
-            this.comments=result.body.message
+            this.comments=this.comments.concat(result.body.message)
           }else{
             Toast('评论加载失败')
           }
         })
+      },
+      getMore(){
+        this.pageIndex++;
+        this.getComments();
       }
     },
     props:['id']
