@@ -17,14 +17,14 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource)
 Vue.http.options.root = 'http://vue.studyit.io';
 
-//导入头部固定部分
-import { Header } from 'mint-ui';
-Vue.component(Header.name, Header);
 
-//导入轮播图
-import { Swipe, SwipeItem } from 'mint-ui';
+
+//导入轮播图  和头部固定部分   和按钮组件
+import { Swipe, SwipeItem,Header,Button } from 'mint-ui';
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Header.name, Header);
+Vue.component(Button.name, Button);
 
 
 //导入时间插件  格式化时间
