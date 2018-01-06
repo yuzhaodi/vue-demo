@@ -20,12 +20,23 @@ Vue.http.options.emulateJSON = true;
 
 
 
-//导入轮播图  和头部固定部分   和按钮组件
-import { Swipe, SwipeItem,Header,Button } from 'mint-ui';
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Header.name, Header);
-Vue.component(Button.name, Button);
+//导入轮播图  和头部固定部分   和按钮组件   和懒加载  按需导入
+// import { Swipe, SwipeItem,Header,Button,Lazyload } from 'mint-ui';
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.component(Header.name, Header);
+// Vue.component(Button.name, Button);
+// Vue.use(Lazyload);
+
+//改为全部导入  因为懒加载需要
+import MintUI from 'mint-ui'
+Vue.use(MintUI)
+import 'mint-ui/lib/style.css'
+
+
+//导入缩略图
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
 
 
 //导入时间插件  格式化时间
