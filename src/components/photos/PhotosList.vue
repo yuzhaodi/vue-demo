@@ -30,7 +30,7 @@
 
 
 <script>
-  import mui from '../../lib/mui/js/mui.min.js'
+  import mui from '../../lib/mui/js/mui.min.js'   //这个滚动组件需要js文件
   export default {
     data(){
       return {

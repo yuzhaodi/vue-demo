@@ -14,7 +14,8 @@
 				<span class="mui-icon mui-icon-home"></span>
 				<span class="mui-tab-label">首页</span>
 			</router-link>
-			<router-link class="mui-tab-item1" to="/member">
+			<!-- 将mui-tab-item改为mui-tab-item1 防止与底部tab冲突 -->
+			<router-link class="mui-tab-item1" to="/member">   
 				<span class="mui-icon mui-icon-contact"></span>
 				<span class="mui-tab-label">会员</span>
 			</router-link>
@@ -58,7 +59,7 @@
 	.v-leave-active{
 		transition: all 0.5s ease;
 	}
-
+//解决底下tab栏与上面的滑动导航冲突的问题
 	 .mui-bar-tab .mui-tab-item1.mui-active {
    color: #007aff;
  }
