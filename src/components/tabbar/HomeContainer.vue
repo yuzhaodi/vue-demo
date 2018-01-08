@@ -2,7 +2,7 @@
   <div>
     <!-- 轮播图 -->
    
-      <swiper :lunbotuList='lunbotuList'></swiper>
+      <swiper :lunbotuList='lunbotuList' :isfull="true"></swiper>
 
     <!-- 六宫格 -->
      <ul class="mui-table-view mui-grid-view mui-grid-9">
