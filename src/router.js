@@ -12,6 +12,8 @@ import Photoslist from './components/photos/PhotosList.vue'
 import Photoinfo from './components/photos/Photoinfo.vue'
 import Goodslist from './components/goods/Goodslist.vue'
 import Goodsinfo from './components/goods/Goodsinfo.vue'
+import Gooddesc from './components/goods/Goodsdesc.vue'
+import Goodcom from './components/goods/Goodscomm.vue'
 
 
 // 3. 创建路由对象
@@ -27,7 +29,9 @@ var router = new VueRouter({
     {path:'/home/photos',component:Photoslist},
     {path:'/home/photoinfo/:id',component:Photoinfo},
     {path:'/home/goodslist',component:Goodslist},
-    {path:'/home/goodsinfo/:id',component:Goodsinfo,name:'goodsinfo'}
+    {path:'/home/goodsinfo/:id',component:Goodsinfo,name:'goodsinfo'},
+    {path:'/home/goodsdesc/:id',component:Gooddesc,name:'goodsdesc'},
+    {path:'/home/goodscom/:id',component:Goodcom,name:'goodscom'}
   ],
   linkActiveClass:' mui-active'
 })

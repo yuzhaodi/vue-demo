@@ -1,5 +1,17 @@
 <template>
   <div class="goodsinfo-container">
+    <!-- 小球 -->
+    <transition 
+    @before-enter="beforeEnter" 
+    @enter="enter"
+    @after-enter="afterEnter">
+      <div class="ball" v-show='ballFlag' ref='ball'></div>
+    </transition>
+
+
+
+
+
     <!-- 商品轮播 -->
     <div class="mui-card">
       <div class="mui-card-content">
@@ -34,8 +46,8 @@
         </div>
       </div>
       <div class="mui-card-footer">
-        <mt-button type="primary" size="large" plain>图文介绍</mt-button>
-        <mt-button type="danger" size="large" plain>商品评论</mt-button>
+        <mt-button type="primary" size="large" plain @click="godec(id)">图文介绍</mt-button>
+        <mt-button type="danger" size="large" plain @click="goCom(id)">商品评论</mt-button>
       </div>
     </div>
   </div>
@@ -73,6 +85,12 @@ import numbox from '../subcomponents/NumberBox.vue'
             this.goodinfo=result.body.message[0]
           }
         })
+      },
+      godec(id){
+        this.$router.push({name:'goodsdesc',params:{id}})
+      },
+      goCom(id){
+        this.$router.push({name:'goodscom',params:{id}})
       }
     },
     components:{
