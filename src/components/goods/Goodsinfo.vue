@@ -31,7 +31,7 @@
           </p>
           <p>购买数量：<numbox></numbox></p>
           <mt-button type="primary" size='small'>立即购买</mt-button>
-          <mt-button type="danger" size='small'>加入购物车</mt-button>
+          <mt-button type="danger" size='small' @click="addToShopCar">加入购物车</mt-button>
         </div>
       </div>
     </div>
@@ -61,7 +61,8 @@ import numbox from '../subcomponents/NumberBox.vue'
       return{
         id:this.$route.params.id,
         lunbotu:[],
-        goodinfo:{}
+        goodinfo:{},
+        ballFlag:false
       }
     },
     created(){
@@ -89,8 +90,33 @@ import numbox from '../subcomponents/NumberBox.vue'
       godec(id){
         this.$router.push({name:'goodsdesc',params:{id}})
       },
+      addToShopCar(){
+        this.ballFlag=!this.ballFlag
+      },
       goCom(id){
         this.$router.push({name:'goodscom',params:{id}})
+      },
+      beforeEnter(el){
+        el.style.transform='translate(0,0)';
+      },
+      enter(el,done){
+        el.offsetWidth;
+
+        const ballPosition=this.$refs.ball.getBoundingClientRect();
+        const badgePosition=document.getElementById('badge').getBoundingClientRect();
+
+        const Xdist=badgePosition.left-ballPosition.left;
+        const Ydist=badgePosition.top-ballPosition.top;
+        console.log(Xdist+'....'+Ydist)
+        
+        el.style.transform=`translate(${Xdist}px,${Ydist}px)`
+
+        el.style.transition='all 0.5s ease'
+
+        done()
+      },
+      afterEnter(el){
+        this.ballFlag =! this.ballFlag
       }
     },
     components:{
@@ -117,5 +143,15 @@ import numbox from '../subcomponents/NumberBox.vue'
     button {
       margin: 15px 0;
     }
+  }
+  .ball {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    z-index: 99;
+    top: 390px;
+    left: 146px;
   }
 </style>
