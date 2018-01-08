@@ -29,7 +29,7 @@
           <p class="price">
             市场价:<del>￥{{goodinfo.market_price}}</del>&nbsp;&nbsp;销售价：<span class="now_price">￥{{goodinfo.sell_price}}</span>
           </p>
-          <p>购买数量：<numbox></numbox></p>
+          <p>购买数量：<numbox @getCount='getSelectedCount' :max='goodinfo.stock_quantity'></numbox></p>
           <mt-button type="primary" size='small'>立即购买</mt-button>
           <mt-button type="danger" size='small' @click="addToShopCar">加入购物车</mt-button>
         </div>
@@ -62,7 +62,8 @@ import numbox from '../subcomponents/NumberBox.vue'
         id:this.$route.params.id,
         lunbotu:[],
         goodinfo:{},
-        ballFlag:false
+        ballFlag:false,
+        selectedCount:1
       }
     },
     created(){
@@ -117,6 +118,10 @@ import numbox from '../subcomponents/NumberBox.vue'
       },
       afterEnter(el){
         this.ballFlag =! this.ballFlag
+      },
+      getSelectedCount(count){
+        this.selectedCount=count;
+        console.log(this.selectedCount)
       }
     },
     components:{
