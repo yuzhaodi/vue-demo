@@ -4,13 +4,13 @@
     <div class="mui-card">
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          这是一个最简单的卡片视图控件；卡片视图常用来显示完整独立的一段信息，比如一篇文章的预览图、作者信息、点赞数量等
+          <swiper :lunbotuList='lunbotu'></swiper>
         </div>
       </div>
     </div>
 
     <!-- 商品购买 -->
-    <div class="mui-card">
+    <div class="mui-card">``
       <div class="mui-card-header">页眉</div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import swiper from '../subcomponents/Lunbo.vue'
   export default {
     data(){
       return{
@@ -40,16 +41,22 @@
       }
     },
     created(){
-      getLunbo()
+      this.getLunbo()
     },
     methods:{
       getLunbo(){
         this.$http.get('api/getthumimages/'+this.id).then(result=>{
           if(result.body.status===0){
+            result.body.message.forEach(item=>{
+              item.img=item.src
+            })
             this.lunbotu=result.body.message
           }
         })
       }
+    },
+    components:{
+      swiper
     }
   }
 </script>
