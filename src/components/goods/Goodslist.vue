@@ -1,52 +1,70 @@
 <template>
+  <!-- <div class="goods-list">
+    <div class="good-item" v-for="item in goodsList" :key="item.id">
+      <img :src="item.img_url" alt="">
+      <h1 class="title">{{item.title}}</h1>
+      <div class="info">
+        <p class="price">
+          <span class="now">￥{{ item.sell_price }}</span>
+          <span class="old">￥{{ item.market_price }}</span>
+        </p>
+        <p class="sell">
+          <span>热卖中</span>
+          <span>剩{{ item.stock_quantity }}件</span>
+        </p>
+      </div>
+    </div>
+    <mt-button type='danger' size='large' @click="getMore">加载更多</mt-button>
+  </div> -->
   <div class="goods-list">
-    <div class="good-item">
-      <img src="http://ofv795nmp.bkt.clouddn.com//upload/201504/20/thumb_201504200119256512.jpg" alt="">
-      <h1 class="title">小米（Mi）小米Note 16G双网通版</h1>
+    <div class="good-item" v-for="item in goodsList" :key="item.id" @click="getDetail(item.id)">
+      <img :src="item.img_url" alt="">
+      <h1 class="title">{{item.title}}</h1>
       <div class="info">
         <p class="price">
-          <span class="now">￥899</span>
-          <span class="old">￥999</span>
+          <span class="now">￥{{ item.sell_price }}</span>
+          <span class="old">￥{{ item.market_price }}</span>
         </p>
         <p class="sell">
           <span>热卖中</span>
-          <span>剩60件</span>
+          <span>剩{{ item.stock_quantity }}件</span>
         </p>
       </div>
     </div>
-    <div class="good-item">
-      <img src="http://ofv795nmp.bkt.clouddn.com//upload/201504/20/thumb_201504200119256512.jpg" alt="">
-      <h1 class="title">小米（Mi）小米Note 16G双网通版</h1>
-      <div class="info">
-        <p class="price">
-          <span class="now">￥899</span>
-          <span class="old">￥999</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩60件</span>
-        </p>
-      </div>
-    </div>
-    <div class="good-item">
-      <img src="http://ofv795nmp.bkt.clouddn.com//upload/201504/20/thumb_201504200119256512.jpg" alt="">
-      <h1 class="title">小米（Mi）小米Note 16G双网通版</h1>
-      <div class="info">
-        <p class="price">
-          <span class="now">￥899</span>
-          <span class="old">￥999</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩60件</span>
-        </p>
-      </div>
-    </div>
+    <mt-button type='danger' size='large' @click="getMore">加载更多</mt-button>
   </div>
+  
 </template>
 
 <script>
-  
+  export default {
+    data(){
+      return {
+        pageindex:1,
+        goodsList:[]
+      }
+    },
+    created(){
+      this.getGoodsList()
+    },
+    methods:{
+      getGoodsList(){
+        this.$http.get('api/getgoods?pageindex='+this.pageindex).then(result=>{
+          if(result.body.status===0){
+            this.goodsList=this.goodsList.concat(result.body.message)
+          }
+        })
+      },
+      getMore(){
+        this.pageindex++;
+        this.getGoodsList();
+      },
+      getDetail(id){
+        this.$router.push({name:'goodsinfo',params:{id}})
+      }
+    }
+
+  }
 </script>
 
 
