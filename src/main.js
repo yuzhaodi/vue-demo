@@ -37,7 +37,15 @@ const store=new Vuex.Store({
       }
     }
   },
-  getters:{}
+  getters:{
+    getAllCount(state){
+      var c=0;
+      state.car.some(item=>{
+        c+=item.count
+      })
+      return c
+    }
+  }
 })
 
 //导入vue-resource
