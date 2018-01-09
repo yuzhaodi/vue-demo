@@ -48,6 +48,13 @@ const store=new Vuex.Store({
         return true
       })
       return c
+    },
+    getIdCount(state){
+      var o={};
+      state.car.forEach(item=>{
+        o[item.id]=item.count
+      })
+      return o
     }
   }
 })
