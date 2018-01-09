@@ -12,6 +12,35 @@ Vue.use(VueRouter)
 //导入路由文件
 import router from './router.js'
 
+
+//注册vuex
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
+//实例
+const store=new Vuex.Store({
+  state:{
+    car:[]
+  },
+  mutations:{
+    addToCar(state,goodsinfo){
+      var flag=false;
+      state.car.some(item=>{
+        if(item.id==goodsinfo.id){
+          flag=true
+          item.count+=parseInt(goodsinfo.count)
+          console.log(item.count)
+          return true
+        }       
+      })
+      if(flag==false){
+        state.car.push(goodsinfo)
+      }
+    }
+  },
+  getters:{}
+})
+
 //导入vue-resource
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
@@ -63,5 +92,6 @@ var vm=new Vue({
   el:'#app',
   render:c=>c(app),
      //渲染到index.html
-  router  //挂载路由组件
+  router, //挂载路由组件
+  store  //挂载vuex实例
 })

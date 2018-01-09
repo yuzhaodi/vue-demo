@@ -93,6 +93,14 @@ import numbox from '../subcomponents/NumberBox.vue'
       },
       addToShopCar(){
         this.ballFlag=!this.ballFlag
+
+        var goodsinfo={
+          id:this.id,
+          count:this.selectedCount,
+          price:this.goodinfo.sell_price,
+          selected:true
+        }
+        this.$store.commit('addToCar',goodsinfo)
       },
       goCom(id){
         this.$router.push({name:'goodscom',params:{id}})
