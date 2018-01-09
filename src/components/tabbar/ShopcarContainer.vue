@@ -6,7 +6,7 @@
         <div class="mui-card-content">
           <div class="mui-card-content-inner">
             <!-- v-model绑定的是对应的按钮选中状态 selected:true/false-->
-            <!-- mt-switch 中有change事件,监听选中状态的改变 -->
+            <!-- mt-switch 中有change事件,监听选中状态的改变 对商品的件数和总价格进行操作-->
             <mt-switch 
             v-model="$store.getters.getSelectedCount[item.id]"
             @change='getselectedChange(item.id,$store.getters.getSelectedCount[item.id])'></mt-switch>
@@ -15,7 +15,11 @@
               <h1>{{item.title}}</h1>
               <p>
                 <span class="price">￥{{item.sell_price}}</span>
+                <!-- 商品加减件数组件  属于mui组件  initcount和goodsid是父往子传值
+                      $store.getters.getIdCount[item.id]传入的是本地存储中获取的商品件数
+                  -->
                 <numbox :initcount='$store.getters.getIdCount[item.id]' :goodsid='item.id'></numbox>
+                <!-- 点击删除对应的商品 -->
                 <a href="#" @click.prevent="remove(item.id,i)">删除</a>
               </p>
             </div>
@@ -24,18 +28,20 @@
       </div>
     </div>
 
-
+  <!-- 计算总件数与总价格的卡片   mui的卡片选项 -->
     <div class="mui-card">
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner jiesuan">
 						<div class="left">
               <p>总计（不含运费）</p>
+              <!-- vuex传入的getters的值   总件数  与 总价格-->
               <p>已勾选商品 <span class="red">{{$store.getters.getGoodsCountPrc.count}}</span> 件， 总价 <span class="red">￥{{$store.getters.getGoodsCountPrc.price}}</span></p>
             </div>
              <mt-button type="danger">去结算</mt-button>
 					</div>
 				</div>
 			</div>
+      <!-- 测试按钮选中用 -->
       <p>{{$store.getters.getSelectedCount}}</p>
   </div>
 </template>

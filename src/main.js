@@ -20,10 +20,13 @@ Vue.use(Vuex)
 //实例
 //首先获取本地存储的内容
 var car =JSON.parse(localStorage.getItem('car')||'[]')
+//vuex实例化
 const store=new Vuex.Store({
+  //state相当于vue的data属性
   state:{
-    car:car
+    car:car    //里面是商品的id 数量  价格  选中状态
   },
+  //mutations相当于methods方法
   mutations:{
     addToCar(state,goodsinfo){
       var flag=false;
