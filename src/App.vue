@@ -1,7 +1,11 @@
 <template>
   <div class="app-container">
       <!-- 固定的头部  mint-->
-      <mt-header fixed title="分瓜的项目"></mt-header>
+      <mt-header fixed title="分瓜的项目">
+				<!-- <span slot='left' @click='goBack' v-show='flag'>
+					<mt-button icon='back'>返回</mt-button>
+				</span> -->
+			</mt-header>
 
       <!-- 中间切换的组件 -->
       <transition>
@@ -35,7 +39,18 @@
 </template>
 
 <script>
-
+	export default {
+		data(){
+			return {
+				flag:false
+			}
+		},
+		methods:{
+			goBack(){
+				this.$route.go(-1)
+			}
+		}
+	}
 </script>
 
 

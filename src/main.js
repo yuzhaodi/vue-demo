@@ -18,9 +18,11 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 //实例
+//首先获取本地存储的内容
+var car =JSON.parse(localStorage.getItem('car')||'[]')
 const store=new Vuex.Store({
   state:{
-    car:[]
+    car:car
   },
   mutations:{
     addToCar(state,goodsinfo){
@@ -35,6 +37,7 @@ const store=new Vuex.Store({
       if(flag==false){
         state.car.push(goodsinfo)
       }
+      localStorage.setItem('car',JSON.stringify(state.car))
     }
   },
   getters:{
@@ -42,6 +45,7 @@ const store=new Vuex.Store({
       var c=0;
       state.car.some(item=>{
         c+=item.count
+        return true
       })
       return c
     }

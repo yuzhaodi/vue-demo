@@ -128,7 +128,7 @@ import numbox from '../subcomponents/NumberBox.vue'
         this.ballFlag =! this.ballFlag
       },
       getSelectedCount(count){
-        this.selectedCount=count;
+        this.selectedCount=parseInt(count);
         console.log(this.selectedCount)
       }
     },
