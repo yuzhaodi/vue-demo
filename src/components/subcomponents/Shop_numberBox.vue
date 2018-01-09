@@ -21,9 +21,13 @@ import mui from '../../lib/mui/js/mui.min.js'
     },
     methods:{
       countChange(){
+        this.$store.commit('updateCount',{
+          id:this.goodsid,
+          count:this.$refs.numbox.value
+        })
       }
     },
-    props:['initcount']
+    props:['initcount','goodsid']
   }
 
 </script>

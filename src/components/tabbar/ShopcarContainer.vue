@@ -10,7 +10,7 @@
               <h1>{{item.title}}</h1>
               <p>
                 <span class="price">￥{{item.sell_price}}</span>
-                <numbox :initcount='$store.getters.getIdCount[item.id]'></numbox>
+                <numbox :initcount='$store.getters.getIdCount[item.id]' :goodsid='item.id'></numbox>
                 <a href="#">删除</a>
               </p>
             </div>

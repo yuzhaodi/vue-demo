@@ -2,9 +2,9 @@
   <div class="app-container">
       <!-- 固定的头部  mint-->
       <mt-header fixed title="分瓜的项目">
-				<!-- <span slot='left' @click='goBack' v-show='flag'>
+				<span slot='left' @click='goBack' v-show='flag'>
 					<mt-button icon='back'>返回</mt-button>
-				</span> -->
+				</span>
 			</mt-header>
 
       <!-- 中间切换的组件 -->
@@ -45,9 +45,21 @@
 				flag:false
 			}
 		},
+		created(){
+			this.flag=this.$route.path='/home'?false:true
+		},
 		methods:{
 			goBack(){
-				this.$route.go(-1)
+				this.$router.go(-1)
+			}
+		},
+		watch: {
+			'$route.path':function(newval){
+				if(newval==='/home'){
+					this.flag=false
+				}else{
+					this.flag=true
+				}
 			}
 		}
 	}

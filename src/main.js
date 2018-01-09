@@ -38,14 +38,22 @@ const store=new Vuex.Store({
         state.car.push(goodsinfo)
       }
       localStorage.setItem('car',JSON.stringify(state.car))
+    },
+    updateCount(state,goodsinfo){ 
+      state.car.some(item=>{
+        if(item.id===goodsinfo.id){
+          item.count=parseInt(goodsinfo.count)
+          return true
+        }
+      })
+      localStorage.setItem('car',JSON.stringify(state.car))
     }
   },
   getters:{
     getAllCount(state){
       var c=0;
-      state.car.some(item=>{
+      state.car.forEach(item=>{
         c+=item.count
-        return true
       })
       return c
     },
