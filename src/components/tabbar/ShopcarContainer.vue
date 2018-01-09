@@ -52,7 +52,6 @@ export default {
     this.getGoodsList()
   },
   methods:{
-
     //根据本地存储获取商品列表
     getGoodsList(){
       var idArr=[];
