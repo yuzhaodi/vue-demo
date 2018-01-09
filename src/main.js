@@ -29,7 +29,6 @@ const store=new Vuex.Store({
         if(item.id==goodsinfo.id){
           flag=true
           item.count+=parseInt(goodsinfo.count)
-          console.log(item.count)
           return true
         }       
       })
