@@ -47,6 +47,23 @@ const store=new Vuex.Store({
         }
       })
       localStorage.setItem('car',JSON.stringify(state.car))
+    },
+    removeList(state,id){
+      state.car.some((item,i)=>{
+        if(item.id===id){
+          state.car.splice(i,1)
+          return true
+        }
+      })
+      localStorage.setItem('car',JSON.stringify(state.car))
+    },
+    updateSelected(state,info){
+      state.car.forEach(item=>{
+        if(item.id==info.id){
+          item.selected=info.selected
+        }
+      })
+      localStorage.setItem('car',JSON.stringify(state.car))
     }
   },
   getters:{
@@ -63,6 +80,26 @@ const store=new Vuex.Store({
         o[item.id]=item.count
       })
       return o
+    },
+    getSelectedCount(state){
+      var s={};
+      state.car.forEach(item=>{
+        s[item.id]=item.selected
+      })
+      return s
+    },
+    getGoodsCountPrc(state){
+      var p={
+        count:0,
+        price:0
+      }
+      state.car.forEach(item=>{
+        if(item.selected==true){
+          p.count+=item.count;
+          p.price+=item.price*item.count
+        }
+      })
+      return p
     }
   }
 })
